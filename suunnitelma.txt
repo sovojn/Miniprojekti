@@ -1,0 +1,113 @@
+temp.v.0.6
+Slack
+https://academyfijava-s17.slack.com/messages/C7JLB5QJC/
+GitHub
+https://github.com/sovojn/Miniprojekti
+
+Linkki liikenneviraston API:in
+https://rata.digitraffic.fi/api/v1/doc/index.html
+
+Lukuohje:
+Tämä on HKI-Lahti:
+https://rata.digitraffic.fi/api/v1/live-trains/station/HKI
+/LH
+
+Tämä on HKI seuraavaksi lähtevät (tai saapuvat!)
+https://rata.digitraffic.fi/api/v1/live-trains/station/HKI?
+minutes_before_departure=15&minutes_after_departure=15
+&minutes_before_arrival=15&minutes_after_arrival=15
+
+Yllä olevaa hyödyntävä sivusto
+https://www.junat.net/fi/
+
+Ryhmä: Kalle, Katja, Mika, Sonja
+Kuka tekee mitäkin
+• Mitkä ovat päätehtävät (alla kohdat 1-5)
+• Miten eri osat liittyvät toisiinsa (kronologinen järjestys)
+
+1. HTML-sivu + CSS (Katja, Kalle, Sonja)
+* Yksi toiminnallisuus kerrallaan, ulkoasu muodostuu tarpeen täyttämisen ympärille
+- Elementti, aloituspiste Helsinki ja aina uusi määränpää
+X Minne, milloin?
+X Minne voidaan jättää tyhjäksi
+- näytetään ensimmäiset kolme aikaa junista, jotka lähtevät sinä aikana
+- Portti Helsingistä muualle Suomeen
+- Pudotusvalikko, josta voidaan valita minne juna menee ja milloin
+
+2. Haku/suodatus (Katja, Kalle, Sonja, Mika)
+* Seuraavan junan haku Helsingistä määräasemien perusteella
+- Haetaan REST API:sta JSON muotoisena ”oliona” (verkon yli Stringinä) ja parseroidaan JavaScrip-olioksi
+* Kulkemassa olevien junien haku:
+https://www.vr.fi/cs/vr/fi/juku
+** kahden aseman väli (mitkä junat ovat tällä hetkellä raiteilla aseman X ja Y välillä)
+** paikkatieto (juna XYZ on nyt sijainnissa ”se ja se”)
+*** Seuraavan aseman selvittäminen junan sen hetkisen paikkatiedon perusteella
+https://junatkartalla.vr.fi/?lang=fi-FI
+* Tieto tietyn junan kulusta, asemat joilla pysähtyy, kuinka pitkä pysähdys
+** Jos juna kulkemassa, niin todelliset ja arvioidut ajat
+https://www.vr.fi/cs/vr/fi/liikennetilanne
+
+3. Git-hallinnointi (Sonja)
+https://github.com/sovojn/Miniprojekti
+* Projektin nimi IntelliJ:ssä kaikilla samana: Miniprojekti1
+* branchit?
+- Päivän päätteeksi tehdään julkaisuversion koonti Gitin masteriin
+
+4. "Sisäänkirjautuminen tunnuksilla": Omien asetusten talletus selaimen LocalStorageen, monta käyttäjää mahdollista (jos jää torstaina aikaa, Katja, Kalle, Sonja, Mika)
+
+5. Esitys
+* tekninen tietorakenne powerpoint (Sonja)
+* demo
+
+--X--X--
+
+Tehtäviä:
+MUISTA: Lokalisointi
+
+@Sonja V
+Etsi Api-dokumentaatiosta komennot (hakuperusteet):
+- Seuraavan junan lähtö määräaseman perusteella, sekä commuter, että long distance
+- Pääteasemien lyhenteet ja junien määränpäät
+HTML-sivu + CSS
+Päivän päätteeksi pushaukset Gittiin
+Torstaina tekninen tietorakenne powerpoint
+
+@Mika Etsi Api-dokumentaatiosta komennot (hakuperusteet):
+- Junan tämänhetkinen lähtöaika kolmesta kymmeneen ensimmäistä junaa
+https://rata.digitraffic.fi/api/v1/livetrains/station/HKI?minutes_before_departure=15&minutes_after_departure=15
+* HTML sivusta pitää lähettää joku komento javascriptille, joka muuttaa rajotinta (esim. 3 --> 10)
+** tapahtumakäsittelijä "on.click" --> Jscriptiin muuttujalla for lauseen rajoitin
+
+X Millä hakusanoilla haetaan, linkki
+* Pudotusvalikko, määränpääasema
+https://rata.digitraffic.fi/api/v1/metadata/stations
+
+- Kulussa olevien junien haku
+https://rata.digitraffic.fi/api/v1/live-trains
+
+X Helsingin ja jonkun toisen aseman väli
+Vrt. harjotus (LH = Lahti, LR = Lappeenranta)
+https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/(tähän tulee aseman lyhenne)
+
+- Mikä maksimiaika kalenterille? (under work)
+
+@Kalle
+- Jos juna kulussa, niin todelliset ja arvioidut ajat
+X Esim. lähtöpäivä W, lähtöaika X, saapuminen tunneissa Y
+X Millä hakusanalla saadaan, linkki
+--> liveEstimateTime: datetime  Ennuste. Tyhjä jos juna ei ole matkalla
+HUOM! https://rata.digitraffic.fi/api/v1/doc/resources/estimate-sources.html
+-->
+timeTableRows
+* Kuvaa saapumisia ja lähtöjä liikennepaikoilta. Järjestetty reitin mukaiseen järjestykseen.
+-->
+differenceInMinutes: integer
+* Vertaa aikataulun mukaista aikaa ennusteeseen tai toteutuneeseen aikaan ja kertoo erotuksen minuutteina
+
+@Katja
+- Elementit,  html, css
+
+Yhdessä pohdittavaa
+- Tarvitaanko Geotaggausta
+- Toimiiko kaikilla Gitista tuodut koodit / Pystyvätkö kaikki lisäämään Gittiin tiedostot
+

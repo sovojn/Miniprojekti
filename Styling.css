@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 
+/*
+Pohjarunko Katja
+*/
+
 body    {
     background-image: url("https://hdwallsource.com/img/2014/5/train-track-background-37958-38828-hd-wallpapers.jpg");
     background-position: center;
@@ -109,3 +113,4 @@ div#otsikko {
     position: relative;
     font-family: Montserrat;
 }
+
