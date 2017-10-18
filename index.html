@@ -5,63 +5,85 @@ Pohjarunko: Katja
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
+
+    <!-- MIKA: Lisätty meta tagit -->
+    <meta http-equiv="Content-Language" content="fi"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">   <!-- HTML4 -->
+    <meta charset="UTF-8">   <!-- HTML5 -->
+    <meta name="googlebot" content="noodp">
+    <!--Pakotetaan googlen hakutuloksessa näkymään itsekirjoitettu description content-->
+    <meta name="description" content="Web: Junat sivulla"/>
+    <meta name="abstract" content="Rail Baltican portti pohjoiseen ulottuvuuteen"/>
+    <meta name="keywords" content="Academy, 12 viikkoa, tech, front"/>
+    <meta name="robots" content="all"/>
+    <meta name="distribution" content="Global"/>
+    <meta name="author" content="Katja Seger, Kalle Helminen, Mika Le Gall, Sonja Vojnovic"/>
+    <meta name="publisher" content="Academy Finland Espoo Keilaranta"/>
+    <meta name="rating" content="general">
+    <meta name="robots" content="index, follow">
+
     <title>Pako Helsingistä</title>
-    <link rel="stylesheet" type="text/css" href="Styling.css">
+    <link rel="stylesheet" type="text/css" href="styling.css">
 </head>
+
 <body>
 <div id="otsikko">
     <h1>Pako Helsingistä</h1>
 </div>
+
 <div id="lista">
     <h3>Seuraavat lähtevät junat:</h3>
 </div>
+
 <div id="keski">
     <h3>Hae junia:</h3>
+
     <p class="Otsikko">Minne haluat mennä?</p>
-    <input type="text" list="asemat" placeholder="Kirjoita määränpää"/>
-    <datalist id="asemat">
-        <option>Haapamäki</option>
-        <option>Hanko</option>
-        <option>Hämeenlinna</option>
-        <option>Iisalmi</option>
-        <option>Imatra</option>
-        <option>Joensuu</option>
-        <option>Jyväskylä</option>
-        <option>Kajaani</option>
-        <option>Karjaa</option>
-        <option>Kemi</option>
-        <option>Kemijärvi</option>
-        <option>Kokkola</option>
-        <option>Kolari</option>
-        <option>Kontiomäki</option>
-        <option>Kotka</option>
-        <option>Kouvola</option>
-        <option>Kuopio</option>
-        <option>Lahti</option>
-        <option>Lappeenranta</option>
-        <option>Mikkeli</option>
-        <option>Nurmes</option>
-        <option>Orivesi</option>
-        <option>Oulu</option>
-        <option>Parikkala</option>
-        <option>Parkano</option>
-        <option>Pieksamäki</option>
-        <option>Pori</option>
-        <option>Pännäinen</option>
-        <option>Riihimäki</option>
-        <option>Rovianiemi</option>
-        <option>Savonlinna</option>
-        <option>Seinäjoki</option>
-        <option>Tampere</option>
-        <option>Tikkurila</option>
-        <option>Toijala</option>
-        <option>Tornio</option>
+
+    <select name="asemat" id="asemat">
+        <!-- KALLE: Haettu määränpääasemiin liikenneviraston APIn tarjoamat asemalyhenteet -->
+        <option>--- valitse pysäkki ---</option>
+        <option value="HPK">Haapamäki</option>
+        <option value="HNK">Hanko</option>
+        <option value="HL">Hämeenlinna</option>
+        <option value="ILM">Iisalmi</option>
+        <option value="IMR">Imatra</option>
+        <option value="JNS">Joensuu</option>
+        <option value="JY">Jyväskylä</option>
+        <option value="KAJ">Kajaani</option>
+        <option value="KR">Karjaa</option>
+        <option value="KEM">Kemi</option>
+        <option value="KJÄ">Kemijärvi</option>
+        <option value="KOK">Kokkola</option>
+        <option value="KLI">Kolari</option>
+        <option value="KON">Kontiomäki</option>
+        <option value="KTA">Kotka</option>
+        <option value="KV">Kouvola</option>
+        <option value="KUO">Kuopio</option>
+        <option value="LH">Lahti</option>
+        <option value="LR">Lappeenranta</option>
+        <option value="MI">Mikkeli</option>
+        <option value="NRM">Nurmes</option>
+        <option value="OV">Orivesi</option>
+        <option value="OL">Oulu</option>
+        <option value="PAR">Parikkala</option>
+        <option value="PKO">Parkano</option>
+        <option value="PM">Pieksamäki</option>
+        <option value="PRI">Pori</option>
+        <option value="PNÄ">Pännäinen</option>
+        <option value="RI">Riihimäki</option>
+        <option value="ROI">Rovianiemi</option>
+        <option value="SL">Savonlinna</option>
+        <option value="SK">Seinäjoki</option>
+        <option value="TPE">Tampere</option>
+        <option value="TKL">Tikkurila</option>
+        <option value="TL">Toijala</option>
+        <option value="TOR">Tornio</option>
         <option value="TKU">Turku</option>
-        <option>Vaasa</option>
-        <option>Vainikkala</option>
-        <option>Ylivieska</option>
-    </datalist>
+        <option value="VS">Vaasa</option>
+        <option value="VNA">Vainikkala</option>
+        <option value="YV">Ylivieska</option>
+    </select>
 
     <!--<p class="Otsikko">Milloin?</p>
     <input type="date" name="aika" maxlength="40">
@@ -71,18 +93,21 @@ Pohjarunko: Katja
     <br>
 </div>
 
-<!-- SONJA: Lisätty nappulan toiminnallisuus hakee seuraavat junat "Hae" -nappulaa painamalla -->
+<!-- SONJA: Lisätty painikkseeseen toiminnallisuus, joka käynnistää metodiketjun, jolla haetaan käyttäjän valitseman määränpään junia -->
 <div>
-    <input type="button" onclick="haeJuna(event)" name="lähtönappi" value="Hae" class="nappi" />
-    <ul id="kovo"></ul>
+    <input type="button" onclick="asetaPysakki(event)" name="lahtonappi" value="Hae" class="nappi"/>
+    <ul id="hakutulos"></ul>
 </div>
 
-<!--div>
-    <h4>Lappeenranta (kovo)</h4>
-    <ul id="kovo"></ul>
-</div-->
-
 <script src="komentosarja.js"></script>
+
+<!-- KATJA: Tämä saa kiinni käyttäjän valinnan scriptin ollessa HTML-sivulla -->
+<!--<script>
+function valittuAsema() {
+var asema = document.getElementById('asemat').value;
+}
+</script>-->
+
 <script>
     function goBack() {
         window.history.back();
