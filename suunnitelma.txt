@@ -1,4 +1,7 @@
-temp.v.0.7
+temp.v.0.8
+
+Trello
+https://trello.com/b/gSqKrJbE/web-junat-sivulla-miniprojekti1
 Slack
 https://academyfijava-s17.slack.com/messages/C7JLB5QJC/
 GitHub
@@ -68,6 +71,11 @@ https://github.com/sovojn/Miniprojekti
 5. Esitys
 * tekninen tietorakenne powerpoint (Sonja)
 * demo
+
+--X--X--
+
+Tehtäviä: TORSTAI
+https://trello.com/b/gSqKrJbE/web-junat-sivulla-miniprojekti1
 
 --X--X--
 
