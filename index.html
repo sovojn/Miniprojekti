@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-
 <!--
-Pohjarunko Katja
+Pohjarunko: Katja
 -->
 
+<!DOCTYPE html>
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
@@ -20,16 +19,70 @@ Pohjarunko Katja
 <div id="keski">
     <h3>Hae junia:</h3>
     <p class="Otsikko">Minne haluat mennä?</p>
-    <input type="text" name="paikka" maxlength="40" placeholder="Tampere">
-    <p class="Otsikko">Milloin?</p>
-    <input type="date" name="aika" maxlength="40">
-    <br>
-    <br>
-    <input type="submit" name="lähtönappi" value="Hae" id="nappi" />
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ji1uFe0ma5Y?t=6s" frameborder="0" allowfullscreen></iframe>
+    <input type="text" list="asemat" placeholder="Kirjoita määränpää"/>
+    <datalist id="asemat">
+        <option>Haapamäki</option>
+        <option>Hanko</option>
+        <option>Hämeenlinna</option>
+        <option>Iisalmi</option>
+        <option>Imatra</option>
+        <option>Joensuu</option>
+        <option>Jyväskylä</option>
+        <option>Kajaani</option>
+        <option>Karjaa</option>
+        <option>Kemi</option>
+        <option>Kemijärvi</option>
+        <option>Kokkola</option>
+        <option>Kolari</option>
+        <option>Kontiomäki</option>
+        <option>Kotka</option>
+        <option>Kouvola</option>
+        <option>Kuopio</option>
+        <option>Lahti</option>
+        <option>Lappeenranta</option>
+        <option>Mikkeli</option>
+        <option>Nurmes</option>
+        <option>Orivesi</option>
+        <option>Oulu</option>
+        <option>Parikkala</option>
+        <option>Parkano</option>
+        <option>Pieksamäki</option>
+        <option>Pori</option>
+        <option>Pännäinen</option>
+        <option>Riihimäki</option>
+        <option>Rovianiemi</option>
+        <option>Savonlinna</option>
+        <option>Seinäjoki</option>
+        <option>Tampere</option>
+        <option>Tikkurila</option>
+        <option>Toijala</option>
+        <option>Tornio</option>
+        <option value="TKU">Turku</option>
+        <option>Vaasa</option>
+        <option>Vainikkala</option>
+        <option>Ylivieska</option>
+    </datalist>
 
+    <!--<p class="Otsikko">Milloin?</p>
+    <input type="date" name="aika" maxlength="40">
+    <br>-->
+
+    <br>
+    <br>
+    <input type="submit" name="lahtonappi" value="Hae" class="nappi"/>
 </div>
-<script src="komentosarja.js">
+
+<div>
+    <h4>Lappeenranta (kovo)</h4>
+    <ul id="kovo"></ul>
+</div>
+
+
+<script src="komentosarja.js"></script>
+<script>
+    function goBack() {
+        window.history.back();
+    }
 </script>
 </body>
 </html>
