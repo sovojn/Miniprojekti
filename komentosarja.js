@@ -15,6 +15,8 @@ kyselija.open("GET", "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI
 // Avataan yhteys
 kyselija.send();
 
+var rajoitin = 0;
+
 // Luodaan avoimelle yhteydelle (oliolle) tapahtumankäsittelijä,
 // joka (tilanmuutosten yhteydessä) toteuttaa kommunikointia metodilla
 kyselija.onreadystatechange = function () {
@@ -60,7 +62,6 @@ kyselija.onreadystatechange = function () {
 
                 // KALLE
                 var lahtevat = junaTaulukkona.timeTableRows[0].stationShortCode;
-                var rajoitin = 0;
                 if (lahtevat == "HKI" && rajoitin < 3) {
                     rajoitin++;
 
