@@ -1,4 +1,4 @@
-temp.v.0.6
+temp.v.0.7
 Slack
 https://academyfijava-s17.slack.com/messages/C7JLB5QJC/
 GitHub
@@ -8,6 +8,16 @@ Linkki liikenneviraston API:in
 https://rata.digitraffic.fi/api/v1/doc/index.html
 
 Lukuohje:
+
+Mik‰ on l‰hijuna?
+https://www.vr.fi/cs/vr/fi/lahiliikenteen-reittikartta-fi
+
+Mik‰ on paikallisjuna?
+- Ei ole
+
+Mik‰ on kaukojuna(n rataverkosto)?
+https://www.vr.fi/cs/vr/fi/kaukoliikenne-aikataulut
+
 T‰m‰ on HKI-Lahti:
 https://rata.digitraffic.fi/api/v1/live-trains/station/HKI
 /LH
@@ -61,7 +71,13 @@ https://github.com/sovojn/Miniprojekti
 
 --X--X--
 
-Teht‰vi‰:
+Teht‰vi‰: KESKIVIIKKO
+K‰ytet‰‰n backlogia, backlogina slack
+https://academyfijava-s17.slack.com/messages/C7JLB5QJC/
+
+--X--X--
+
+Teht‰vi‰ TIISTAI:
 MUISTA: Lokalisointi
 
 @Sonja V
