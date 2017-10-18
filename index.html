@@ -69,13 +69,19 @@ Pohjarunko: Katja
 
     <br>
     <br>
-    <input type="submit" name="lahtonappi" value="Hae" class="nappi"/>
 </div>
 
+<!-- SONJA: Lisätty nappulan toiminnallisuus hakee seuraavat junat "Hae" -nappulaa painamalla -->
 <div>
+    <input type="button" onclick="haeJuna(event)" name="lähtönappi" value="Hae" class="nappi" />
+    <ul id="kovo"></ul>
+    <output id="tulos"></output>"/>
+</div>
+
+<!--div>
     <h4>Lappeenranta (kovo)</h4>
     <ul id="kovo"></ul>
-</div>
+</div-->
 
 
 <script src="komentosarja.js"></script>
