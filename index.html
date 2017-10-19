@@ -206,16 +206,6 @@ console.log(asema);
         window.history.back();
     }
 
-    // SONJA:nappulasta modaali
-    var modal = document.getElementById('id01');
-
-    // SONJA: kun käyttäjä klikkaa modaalin ulkopuolelta, se sulkeutuu
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
     //SONJA: popuppi tallentaa sisäänkirjautumistiedot (Tulee uusi popuppi, jossa kysytään käyttäjältä, haluaako tallentaa tiedot*/
     function tallenna() {
         var inputEmail = document.getElementById("syota");
@@ -225,19 +215,20 @@ console.log(asema);
 
     //SONJA: lisätään alertti, joka aktivoituu, kun käyttäjä haluaa ladata sivun uudestaan tai kun käyttäjä haluaa poistua sivulta
     //SONJA : HUOM! Toimii tällä hetkellä vain Chromessa ja Operassa
-    window.onbeforeunload = function () {
+    //SONJA: otetaan aletti pois käytöstä, koska sotkee koodia
+    /*window.onbeforeunload = function () {
         return "Tiedot häviävät, mikäli poistut sivulta. Haluatko varmasti poistua?";
     };
 
     // SONJA:nappulasta popuppi
-    var boksi = document.getElementById('laatikko');
+     boksi = document.getElementById('laatikko');
 
     // SONJA: ilmoitus, jos tietoja ei syötetty
     window.onclick = function (event) {
         if (event.target == boksi) {
             boksi.style.display = "none";
         }
-    }
+    }*/
 
 </script>
 <script src="komentosarja.js"></script>
