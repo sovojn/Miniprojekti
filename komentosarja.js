@@ -130,6 +130,13 @@ var paatePysakkiLyhytTunniste;
 
 // MIKA: Muokattu Katjan scriptiä siten, että sen voi sijoittaa erilliseen tiedostoon ja lisätty metodin suoritus
 function asetaPysakki() {
+    // KALLE: Poistaa käyttäjälle näytettävältä sivulta mahdollisesti aiemmin haetut tiedot (eli hakutulosta ei lisätä vanhan hakutuloksen jatkeeksi)
+    var hakutulos = document.getElementById("hakutulos");
+    while (hakutulos.firstChild){
+        hakutulos.removeChild(hakutulos.firstChild);
+    }
+
+
     osoite = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + document.getElementById('lahtoasemat').value + "/" + document.getElementById("asemat").value;
     console.log(osoite);
     // Lähtöasema
@@ -178,7 +185,11 @@ function haeJuna() {
                 for (var i = 0; i < 3; i++) {
                     var junaTaulukkona = taulu[i];
 
+                    // KALLE: Try-catch sille, että käyttäjä on asettanut junaraiteiden päiksi pysäkit, joille VR ei tarjoa suoraa yhteyttä
+                    try {
                     var lahtoaika = new Date(junaTaulukkona.timeTableRows[0].scheduledTime);
+
+
                     var stilisointi = {hour: "2-digit", minute: "2-digit", hour12: false};
                     var taulukonKoko = junaTaulukkona.timeTableRows.length;
                     var saapumisaika = new Date();  // Esitellään ennen seuraavaa silmukaa muuttuja, silmukan ulkopuolella
@@ -215,6 +226,11 @@ function haeJuna() {
 // haettu sisältö kapseloituna sisälleen tekstiNodeen,
 // ikään kuin maatuskanuken tavoin...
                     htmlElementti.appendChild(uusielementti);
+
+                    } catch (err){
+                        alert("Annettujen asemien välille ei löytynyt suoraa yhteyttä");
+                        break;
+                    }
 
 // HTML-sivun muokkaus olisi voitu tehdä myös suoraan, maatuskanuken tavoin, asettamalla lauseet sisäkkäin:
 // htmlElementti.appendChild(document.createElement("li").appendChild(document.createTextNode(junaTaulukkona.trainCategory + ' juna: "' + junaTaulukkona.trainType + junaTaulukkona.trainNumber + '" (Helsingistä) lähtee klo. ' + lahtoaika.toLocaleTimeString("fi", stilisointi) + " ja saapuu Lappeenrantaan klo. " + saapumisaika.toLocaleTimeString("fi", stilisointi))));
