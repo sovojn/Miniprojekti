@@ -121,26 +121,29 @@ kyselija.onreadystatechange = function () {
 
 // MIKA: Globaaleja muuttujia, jotka jaetaan eri metodeille hyödynnettäväksi
 // (muokataan URL osoitetta mistä REST APIsta tarvittava tieto noudetaan)
-var osoite;
-// Lähtöasema
-var lahtoAsemaLyhytTunniste;
-// Päätepysäkki
-var paatePysakkiLyhytTunniste;
+                                        var osoite;
+                                        // Lähtöasema
+                                        var lahtoAsemaLyhytTunniste;
+                                        // Päätepysäkki
+                                        var paatePysakkiLyhytTunniste;
 
 
-// MIKA: Muokattu Katjan scriptiä siten, että sen voi sijoittaa erilliseen tiedostoon ja lisätty metodin suoritus
-function asetaPysakki() {
+                                        // MIKA: Muokattu Katjan scriptiä siten, että sen voi sijoittaa erilliseen tiedostoon ja lisätty metodin suoritus
+                                        function asetaPysakki() {
     // KALLE: Poistaa käyttäjälle näytettävältä sivulta mahdollisesti aiemmin haetut tiedot (eli hakutulosta ei lisätä vanhan hakutuloksen jatkeeksi)
     var hakutulos = document.getElementById("hakutulos");
     while (hakutulos.firstChild){
         hakutulos.removeChild(hakutulos.firstChild);
     }
 
-
     osoite = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + document.getElementById('lahtoasemat').value + "/" + document.getElementById("asemat").value;
     console.log(osoite);
     // Lähtöasema
     lahtoAsemaLyhytTunniste = document.getElementById('lahtoasemat').value;
+
+    // KATJA: Tallennetaan APIsta saatu tulos SessionStorageen, jota voi uudelleen käyttää eri sivuilla
+    sessionStorage.lahtoasema = lahtoAsemaLyhytTunniste;
+
     // Päätepysäkki
     paatePysakkiLyhytTunniste = document.getElementById("asemat").value;
     haeJuna();
@@ -180,6 +183,10 @@ function haeJuna() {
                 // kyseessä olevan Javan kaltainen HashMap-taulukko (JavaScriptin assosiatiivinen
                 // avain-arvo -pari taulukko). Konsolilta nähdään mitä avaimia eri arvoille on tarjolla
                 console.dir(taulu);
+
+                // KATJA: Avataan uusi HTML-sivu ja hyödynnetään SessionStorageen tallennettua tietoa (APIsta saatu tulos)
+                sessionStorage.taulu = sisalto;
+                window.location="hakutehty.html";
 
                 // i < taulu.length
                 for (var i = 0; i < 3; i++) {
