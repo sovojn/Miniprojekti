@@ -4,6 +4,21 @@
 // Pakotetaan muuttujan (variable) esittely tapahtuvaksi (var x = arvo;)
 "use strict";
 
+// KATJA: Globaali muuttuja, joka jaetaan eri metodeille hyödynnettäväksi
+// (avain-arvo -parit pysäkkilyhenteille)
+var lyhenteet = {
+    'HPK': 'Haapamäki', 'HNK': 'Hanko', 'HKI': 'Helsinki', 'HL': 'Hämeenlinna', 'ILM': 'Iisalmi',
+    'IMR': 'Imatra', 'JNS': 'Joensuu', 'JY': 'Jyväskylä', 'KAJ': 'Kajaani', 'KR': 'Karjaa',
+    'KEM': 'Kemi', 'KJÄ': 'Kemijärvi', 'KOK': 'Kokkola', 'KLI': 'Kolari', 'KON': 'Kontiomäki',
+    'KTA': 'Kotka', 'KV': 'Kouvola', 'KUO': 'Kuopio', 'LH': 'Lahti', 'LR': 'Lappeenranta',
+    'MI': 'Mikkeli', 'NRM': 'Nurmes', 'OV': 'Orivesi', 'OL': 'Oulu', 'PAR': 'Parikkala',
+    'PKO': 'Parkano', 'PM': 'Pieksamäki', 'PRI': 'Pori', 'PNÄ': 'Pännäinen', 'RI': 'Riihimäki',
+    'ROI': 'Rovaniemi', 'SL': 'Savonlinna', 'SK': 'Seinäjoki', 'TPE': 'Tampere', 'TKL': 'Tikkurila',
+    'TL': 'Toijala', 'TOR': 'Tornio', 'TKU': 'Turku', 'VS': 'Vaasa', 'VNA': 'Vainikkala',
+    'YV': 'Ylivieska'
+}
+
+
 // Haetaan HTML-dokumentista haluttu elementti käsiteltäväksi
 var htmlElementti = document.getElementById("lista");
 
@@ -65,10 +80,17 @@ kyselija.onreadystatechange = function () {
                 if (lahtevat == "HKI" && rajoitin < 3) {
                     rajoitin++;
 
+                    // KATJA: "Äkkilähdöissä" (pako Helsingistä) näytetään lyhenne mikäli
+                    // HTML puolella ei ole määritelty selkonimeä
+                    var endstation = lyhenteet[paateasema];
+                    if (endstation === undefined)   {
+                        endstation = paateasema;
+                    }
+
 // Luodaan elementtipuun rakenteeseen uusi tekstisolmu ja haetaan
 // siihen sisältökirjoitusta
                     var solmu = document.createTextNode(junaTaulukkona.trainType + junaTaulukkona.trainNumber +
-                        ' Helsingistä lähtee klo. ' + lahtoaika.toLocaleTimeString("fi", stilisointi) + " suuntana  " + paateasema);
+                        ' Helsingistä lähtee klo. ' + lahtoaika.toLocaleTimeString("fi", stilisointi) + " suuntana  " + endstation);
 
 // Jokaisella silmukoinnilla tehdään uusi kohta järjestämättömään listaan
                     var uusielementti = document.createElement("li");
@@ -97,16 +119,23 @@ kyselija.onreadystatechange = function () {
 
 // *************************************************************************************************************************
 
-// MIKA: Globaale muuttuja, joka jaetaan eri metodeille hyödynnettäväksi
-// (muokataan URL osoitetta mistä REST APIsta tarvittava tieto noudetaan
+// MIKA: Globaaleja muuttujia, jotka jaetaan eri metodeille hyödynnettäväksi
+// (muokataan URL osoitetta mistä REST APIsta tarvittava tieto noudetaan)
 var osoite;
-var lyhytTunniste;
+// Lähtöasema
+var lahtoAsemaLyhytTunniste;
+// Päätepysäkki
+var paatePysakkiLyhytTunniste;
+
 
 // MIKA: Muokattu Katjan scriptiä siten, että sen voi sijoittaa erilliseen tiedostoon ja lisätty metodin suoritus
 function asetaPysakki() {
-    osoite = "https://rata.digitraffic.fi/api/v1/live-trains/station/HKI/" + document.getElementById("asemat").value;
+    osoite = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + document.getElementById('lahtoasemat').value + "/" + document.getElementById("asemat").value;
     console.log(osoite);
-    lyhytTunniste = document.getElementById("asemat").value;
+    // Lähtöasema
+    lahtoAsemaLyhytTunniste = document.getElementById('lahtoasemat').value;
+    // Päätepysäkki
+    paatePysakkiLyhytTunniste = document.getElementById("asemat").value;
     haeJuna();
 }
 
@@ -157,7 +186,7 @@ function haeJuna() {
 
                     for (var j = 0; j < junaTaulukkona.timeTableRows.length; j++) {
 
-                        if (junaTaulukkona.timeTableRows[j].stationShortCode === lyhytTunniste) {
+                        if (junaTaulukkona.timeTableRows[j].stationShortCode === paatePysakkiLyhytTunniste) {
                             saapumisaika = new Date(junaTaulukkona.timeTableRows[j].scheduledTime);
                             // Pysäytetään silmukka ensimmäisellä kerralla ehtolauseeseen astuttaessa,
                             // koska seuraava saman pysäkin kellonaika on junan matkan jatkumisen aika
@@ -169,9 +198,11 @@ function haeJuna() {
 // Luodaan elementtipuun rakenteeseen uusi tekstisolmu ja haetaan
 // siihen sisältökirjoitusta
                     var solmu = document.createTextNode(junaTaulukkona.trainType + junaTaulukkona.trainNumber +
-                        " Helsingistä lähtee klo. " + lahtoaika.toLocaleTimeString("fi", stilisointi) +
-                        " suuntana  " + paateasema + ", saapuu " + lyhytTunniste +
-                        " klo." + saapumisaika.toLocaleTimeString("fi", stilisointi));
+                        " Asemalta " + lyhenteet[lahtoAsemaLyhytTunniste] + " lähtee klo. " + lahtoaika.toLocaleTimeString("fi", stilisointi) +
+                        // " suuntana  " + paateasema +
+                        " ja saapuu kohteeseen " +
+                        lyhenteet[paatePysakkiLyhytTunniste] +
+                        " klo. " + saapumisaika.toLocaleTimeString("fi", stilisointi));
 
 // Jokaisella silmukoinnilla tehdään uusi kohta järjestämättömään listaan
                     var uusielementti = document.createElement("li");

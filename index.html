@@ -31,6 +31,32 @@ Pohjarunko: Katja
     <h1>Pako Helsingistä</h1>
 </div>
 
+<!-- SONJA: Sisäänkirjautuminen; Omien asetusten talletus selaimen LocalStorageen-->
+<div class="kirjaudu">
+    <h2>Kirjaudu sisään</h2>
+    <button onclick="document.getElementById('laatikko').style.display='block'" style="width:auto;">Kirjaudu</button>
+    <div id="laatikko" class="popup">
+        <form class="popupikkuna" action="/action_page.php"> <!--Sonja: Tähän yritetään saada php:n kautta toimimaan palautusfunktio, työn alla-->
+            <div class="sailyta">
+                <label><b>Käyttäjänimi</b></label>
+                <input type="text" placeholder="Syötä käyttäjänimi" name= "nimi" required>
+
+                <label><b>Salasana</b></label>
+                <input type="password" placeholder="Syötä salasana" name="salasana" required>
+
+                <button type="submit">Kirjaudu sisään</button>
+                <br>
+                <input type="checkbox" checked="checked"> Muista minut seuraavalla kerralla</div>
+
+            <div class="sailyta" style="background-color:#f1f1f1 ">
+                <button type="button" onclick="document.getElementById('laatikko').style.display='none'" class="suljeNappula">Sulje</button>
+
+                <span class="ssana">Unohditko <a href="#">salasanasi?</a></span></div>
+        </form>
+    </div>
+</div>
+
+
 <div id="lista">
     <h3>Seuraavat lähtevät junat:</h3>
 </div>
@@ -38,13 +64,14 @@ Pohjarunko: Katja
 <div id="keski">
     <h3>Hae junia:</h3>
 
-    <p class="Otsikko">Minne haluat mennä?</p>
-
-    <select name="asemat" id="asemat">
+    <p class="Otsikko">Mistä haluat lähteä?</p>
+    <!--KATJA: pudotusvalikko mahdollisille lähtöasemille -->
+    <select name="lahtoasemat" id="lahtoasemat">
         <!-- KALLE: Haettu määränpääasemiin liikenneviraston APIn tarjoamat asemalyhenteet -->
         <option>--- valitse pysäkki ---</option>
         <option value="HPK">Haapamäki</option>
         <option value="HNK">Hanko</option>
+        <option value="HKI">Helsinki</option>
         <option value="HL">Hämeenlinna</option>
         <option value="ILM">Iisalmi</option>
         <option value="IMR">Imatra</option>
@@ -72,7 +99,55 @@ Pohjarunko: Katja
         <option value="PRI">Pori</option>
         <option value="PNÄ">Pännäinen</option>
         <option value="RI">Riihimäki</option>
-        <option value="ROI">Rovianiemi</option>
+        <option value="ROI">Rovaniemi</option>
+        <option value="SL">Savonlinna</option>
+        <option value="SK">Seinäjoki</option>
+        <option value="TPE">Tampere</option>
+        <option value="TKL">Tikkurila</option>
+        <option value="TL">Toijala</option>
+        <option value="TOR">Tornio</option>
+        <option value="TKU">Turku</option>
+        <option value="VS">Vaasa</option>
+        <option value="VNA">Vainikkala</option>
+        <option value="YV">Ylivieska</option>
+    </select>
+
+    <p class="Otsikko">Minne haluat mennä?</p>
+    <!--KATJA: pudotusvalikko mahdollisille määränpäille -->
+    <select name="asemat" id="asemat">
+        <!-- KALLE: Haettu määränpääasemiin liikenneviraston APIn tarjoamat asemalyhenteet -->
+        <option>--- valitse pysäkki ---</option>
+        <option value="HPK">Haapamäki</option>
+        <option value="HNK">Hanko</option>
+        <option value="HKI">Helsinki</option>
+        <option value="HL">Hämeenlinna</option>
+        <option value="ILM">Iisalmi</option>
+        <option value="IMR">Imatra</option>
+        <option value="JNS">Joensuu</option>
+        <option value="JY">Jyväskylä</option>
+        <option value="KAJ">Kajaani</option>
+        <option value="KR">Karjaa</option>
+        <option value="KEM">Kemi</option>
+        <option value="KJÄ">Kemijärvi</option>
+        <option value="KOK">Kokkola</option>
+        <option value="KLI">Kolari</option>
+        <option value="KON">Kontiomäki</option>
+        <option value="KTA">Kotka</option>
+        <option value="KV">Kouvola</option>
+        <option value="KUO">Kuopio</option>
+        <option value="LH">Lahti</option>
+        <option value="LR">Lappeenranta</option>
+        <option value="MI">Mikkeli</option>
+        <option value="NRM">Nurmes</option>
+        <option value="OV">Orivesi</option>
+        <option value="OL">Oulu</option>
+        <option value="PAR">Parikkala</option>
+        <option value="PKO">Parkano</option>
+        <option value="PM">Pieksamäki</option>
+        <option value="PRI">Pori</option>
+        <option value="PNÄ">Pännäinen</option>
+        <option value="RI">Riihimäki</option>
+        <option value="ROI">Rovaniemi</option>
         <option value="SL">Savonlinna</option>
         <option value="SK">Seinäjoki</option>
         <option value="TPE">Tampere</option>
@@ -93,25 +168,41 @@ Pohjarunko: Katja
     <br>
 </div>
 
-<!-- SONJA: Lisätty painikkseeseen toiminnallisuus, joka käynnistää metodiketjun, jolla haetaan käyttäjän valitseman määränpään junia -->
+<!-- SONJA: Lisätty painikkeeseen toiminnallisuus, joka käynnistää metodiketjun, jolla haetaan käyttäjän valitseman määränpään junia -->
 <div>
     <input type="button" onclick="asetaPysakki(event)" name="lahtonappi" value="Hae" class="nappi"/>
     <ul id="hakutulos"></ul>
 </div>
 
-<script src="komentosarja.js"></script>
-
-<!-- KATJA: Tämä saa kiinni käyttäjän valinnan scriptin ollessa HTML-sivulla -->
-<!--<script>
+<!--  KATJA: Tämä saa kiinni käyttäjän valinnan scriptin ollessa HTML-sivulla
+<script>
 function valittuAsema() {
+// Lähtöasema
+var lahtoasema = document.getElementById('lahtoasemat').value;
+console.log(asema);
+
+// Päätepysäkki
 var asema = document.getElementById('asemat').value;
+console.log(asema);
 }
-</script>-->
+</script> -->
+
 
 <script>
     function goBack() {
         window.history.back();
     }
+    // SONJA:nappulasta modaali
+    var modal = document.getElementById('id01');
+
+    // SONJA: kun käyttäjä klikkaa modaalin ulkopuolelta, se sulkeutuu
+    window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
 </script>
+<script src="komentosarja.js"></script>
+
 </body>
 </html>
