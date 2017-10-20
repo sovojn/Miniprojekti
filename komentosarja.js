@@ -136,7 +136,7 @@ kyselija.onreadystatechange = function () {
         hakutulos.removeChild(hakutulos.firstChild);
     }
 
-    osoite = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + document.getElementById('lahtoasemat').value + "/" + document.getElementById("asemat").value + "?departure_date=" + document.getElementById("meeting").value;
+    osoite = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + document.getElementById('lahtoasemat').value + "/" + document.getElementById("asemat").value;
     console.log(osoite);
     // Lähtöasema
     lahtoAsemaLyhytTunniste = document.getElementById('lahtoasemat').value;
@@ -146,6 +146,9 @@ kyselija.onreadystatechange = function () {
 
     // Päätepysäkki
     paatePysakkiLyhytTunniste = document.getElementById("asemat").value;
+
+    sessionStorage.paatepysakki=paatePysakkiLyhytTunniste;
+
     haeJuna();
 }
 

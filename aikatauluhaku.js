@@ -37,19 +37,11 @@ for (var i = 0; i < 3; i++) {
         }
     }
 
-    // KATJA: "Äkkilähdöissä" (pako Helsingistä) näytetään lyhenne mikäli
-    // HTML puolella ei ole määritelty selkonimeä
-
-    var endstation = lyhenteet[paateasema];
-    if (endstation === undefined)   {
-        endstation = paateasema;
-    }
-
     var solmu = document.createTextNode(junaTaulukkona.trainType + junaTaulukkona.trainNumber +
         " Asemalta " + lyhenteet[lahtoAsemaLyhytTunniste] + " lähtee klo. " + lahtoaika.toLocaleTimeString("fi", stilisointi) +
         // " suuntana  " + paateasema +
         " ja saapuu kohteeseen " +
-        endstation +
+        lyhenteet[paatePysakkiLyhytTunniste] +
         " klo. " + saapumisaika.toLocaleTimeString("fi", stilisointi));
 
 // Jokaisella silmukoinnilla tehdään uusi kohta järjestämättömään listaan
