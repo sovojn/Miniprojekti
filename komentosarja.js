@@ -135,8 +135,8 @@ kyselija.onreadystatechange = function () {
     while (hakutulos.firstChild){
         hakutulos.removeChild(hakutulos.firstChild);
     }
-
-    osoite = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + document.getElementById('lahtoasemat').value + "/" + document.getElementById("asemat").value;
+    //Lisättiin kalenterin antama pv urlin perään @Kalle
+    osoite = "https://rata.digitraffic.fi/api/v1/live-trains/station/" + document.getElementById('lahtoasemat').value + "/" + document.getElementById("asemat").value + "?departure_date=" + document.getElementById("meeting").value;
     console.log(osoite);
     // Lähtöasema
     lahtoAsemaLyhytTunniste = document.getElementById('lahtoasemat').value;
