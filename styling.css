@@ -1,0 +1,193 @@
+/*
+Pohjarunko: Katja
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+body    {
+    background-image: url("https://hdwallsource.com/img/2014/5/train-track-background-37958-38828-hd-wallpapers.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    align-content: center;
+    border-radius: 15%;
+}
+
+div {
+    background: rgba(255, 255, 255, 0.95);
+    position: relative;
+    width: 45%;
+    align-content: center;
+    font-family: Serif;
+    font-size: large;
+    line-height: 1.5;
+    padding: 1%;
+    color: #081428;
+    border: 5px;
+
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+
+}
+
+h3  {
+    font-family: 'Permanent Marker';
+}
+
+p   {
+    font-family: Montserrat;
+    font-size: medium;
+}
+li{
+    font-family: Montserrat;
+}
+
+input   {
+    border-radius: 10px;
+}
+
+div#otsikko {
+    background-image: url("http://www.lighthouseoc.com/lbcoc/wp-content/uploads/2014/06/Plain-design-pattern-dark-background-image-HD-resolution-latest-pack.jpg");
+    background-size: 100%;
+    color: #ffffff;
+    font-family: 'Permanent Marker';
+    text-align: center;
+    border-radius: 15px;
+    max-width: 768px;
+    margin: 3px auto;
+    position: relative;
+}
+
+div#tulokset    {
+    width: 90%;
+    background-color: transparent;
+    border-radius: 15px;
+}
+
+.Otsikko   {
+    font-family: 'Permanent Marker';
+}
+
+.nappi {
+    background: none;
+    border: solid 2px #474544;
+    border-radius: 20px;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Permanent Marker';
+    font-size: 0.875em;
+    font-weight: bold;
+    outline: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+}
+
+.nappi:hover {
+    background: #474544;
+    color: #F2F3EB;
+}
+
+select {
+    background: none;
+    border: solid 2px #474544;
+    border-radius: 20px;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Montserrat';
+    font-size: 0.6em;
+    font-weight: bold;
+    outline: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+}
+
+
+/* Pohjarunko SONJA: tehdään pop-up sisäänkirjautumisbutton */
+
+.kirjaudu {
+    background: rgba(255, 255, 255, 0.95);
+    font-family: 'Permanent Marker';
+    font-size: 16px;
+
+}
+/*Pop-up boksin tyyli*/
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1; /* Istuu päällä/ on toisen elementin edessä */
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+
+
+}
+
+/* Pop-up boksin sisältö */
+.popup-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 20px;
+}
+
+/*Pop-up boksin sisällä olevat tekstikentät "Syötä käyttäjänimi" ja "Syötä salasana"*/
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 1%;
+    color: #081428;
+    margin: 8px 0;
+    display: inline-block;
+    border-radius: 15px;
+    box-sizing: border-box;
+    font-family: 'Permanent Marker';
+    font-size: 12px;
+
+}
+
+/* Pop-up boksin sisällä olevan Kirjaudu- painikkeen tyyli, tehdään samanlainen kuin "Hae-nappi" */
+button {
+    background: none;
+    border: solid 2px #474544;
+    border-radius: 20px;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Permanent Marker';
+    font-size: 0.875em;
+    font-weight: bold;
+    outline: none;
+    padding: 10px 25px;
+    text-transform: uppercase;
+}
+
+/*Pop-up boksin sisällä olevan "Kirjaudu" painikkeen toiminto, tehdään samanlainen kuin "Hae"-nappi */
+button:hover {
+    background: #474544;
+    color: #F2F3EB;
+}
+/* Pop-up boxin asetukset */
+.sailyta{
+    font-family: Montserrat;
+}
+
+/* "Sulje" -nappulalle tyyli */
+.suljeNappula {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+    text-align: right;
+}
+
